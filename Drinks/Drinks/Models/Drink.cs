@@ -2,7 +2,7 @@
 
 namespace Drinks.Models
 {
-    class Drink : Liquid
+    public class Drink : Liquid
     {
         private const double priceS = 3.5;
         private const double priceM = 4.5;
@@ -12,7 +12,7 @@ namespace Drinks.Models
         public Volume Size { get; set; }
         public double Price { get; set; }
         
-        public Drink(string name, Volume size = Volume.S, double price = priceS)
+        public Drink(string name, Volume size = Volume.S)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -21,7 +21,7 @@ namespace Drinks.Models
 
             Name = name;
             Size = size;
-            Price = Price;
+            SetPrice(size);
         }
 
         public virtual void SetPrice(Volume size)

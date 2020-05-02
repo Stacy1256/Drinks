@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Drinks.Models
 {
-    class Liquid
+    public class Liquid
     {
 
     }

@@ -1,4 +1,4 @@
-Drink: Lemonade-L;
-Fresh: Orange Juice-M-orange;
-CoffeeDrink: Arabica-true;
-Drink: Tea-L;
+Drink-Lemonade-L;
+Fresh-Orange Juice-M-orange;
+CoffeeDrink-Arabica-true;
+Drink-Tea-L;

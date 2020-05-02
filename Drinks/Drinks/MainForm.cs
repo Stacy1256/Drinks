@@ -16,6 +16,9 @@ namespace Drinks
 {
     public partial class MainForm : Form
     {
+        const string messageWarningCreatenew = "Your data is not saved! Do you want to close it and create new document? (Your changes won't be saved)";
+        const string messageWarningSaveNothing = "Nothing to save. Add your data!";
+
         string fileContent = string.Empty;
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
@@ -55,7 +58,11 @@ namespace Drinks
 
                         using (StreamReader reader = new StreamReader(fileStream))
                         {
-                            fileContent = reader.ReadLine();
+                            while (reader.Peek() >= 0)
+                            {
+                                fileContent = reader.ReadLine();
+                                liquidOrders.Add(ParseToLiquid(fileContent));
+                            }
                         }
                     }
                     catch (SecurityException ex)
@@ -66,27 +73,87 @@ namespace Drinks
                 }
             }
             MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
+            foreach (Liquid drink in liquidOrders)
+            {
 
+                MessageBox.Show($"{drink.GetType().ToString()}::{(drink as Drink)?.Name}", "TEEEEEEEEEEST", MessageBoxButtons.OK);
+            }
             // Add data from file to dataGridView
-            //liquidOrders = fileContent.Parse;
-            //source.DataSource = liquidOrders;
-            //dataGridView.DataSource = source;
-            //dataGridView.Visible = true;
+            source.DataSource = liquidOrders;
+            dataGridView.DataSource = source;
+            dataGridView.Visible = true;
 
 
         }
 
+        public static Volume ParseToVolume(string size)
+        {
+            Volume volume;
+            try
+            {
+                volume = (Volume)Enum.Parse(typeof(Volume), size);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+                // Отуууут фііііігняяяяя
+            }
+            return volume;
+        }
+
+        public static Liquid ParseToLiquid(string fileContent)
+        {
+            var fileString = fileContent.Split('-');
+            Liquid item;
+            switch (fileString[0])
+            {
+                case ("Drink"):
+                    item = new Drink(fileString[1], ParseToVolume(fileString[2]));
+                    return item;
+                case ("Fresh"):
+                    item = new Fresh(fileString[1], fileString[3], ParseToVolume(fileString[2]));
+                    return item;
+                case ("CoffeeDrink"):
+                    item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
+                    return item;
+                default:
+                    return new Liquid();
+            }
+        }
+        
+
         private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (liquidOrders.Any())
+            {
+
+                var result = MessageBox.Show(messageWarningCreatenew, "Warning", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    // Something TO DO
+                }
+
+            }
+            else
+            {
+                // Something TO DO
+            }
 
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Write data from dataGridview to file which was opened
-            // Use SaveFileDialog
-
-
+            if (!liquidOrders.Any())
+            {
+                MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                // Write data from LIST to file which was opened
+                // Use SaveFileDialog
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,7 +170,8 @@ namespace Drinks
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ItemForm newItem = new ItemForm();
+            newItem.ShowDialog();
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,11 +207,11 @@ namespace Drinks
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string name = textBoxName.Text;
-            string size = comboBoxSize.Text;
-            string fruit = textBoxFruit.Text;
-            string sort = textBoxSortOfCoffee.Text;
-            dataGridViev.
+            //string name = textBoxName.Text;
+            //string size = comboBoxSize.Text;
+            //string fruit = textBoxFruit.Text;
+            //string sort = textBoxSortOfCoffee.Text;
+            //dataGridViev.
         }
     }
 }
