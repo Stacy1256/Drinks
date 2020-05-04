@@ -213,5 +213,11 @@ namespace Drinks
             //string sort = textBoxSortOfCoffee.Text;
             //dataGridViev.
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SampleForm sample = new SampleForm();
+            sample.ShowDialog();
+        }
     }
 }

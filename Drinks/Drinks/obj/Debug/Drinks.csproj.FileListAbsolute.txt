@@ -52,3 +52,4 @@ C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.csproj.Genera
 C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.exe
 C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.pdb
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.SampleForm.resources
