@@ -293,7 +293,7 @@ namespace Drinks
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            double min = Convert.ToDouble( textBox2.Text);
+            double min = Convert.ToDouble(textBox2.Text);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
