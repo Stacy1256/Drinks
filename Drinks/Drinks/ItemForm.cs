@@ -82,13 +82,10 @@ namespace Drinks
 
         private void textBoxFruit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= 'A' && e.KeyChar <= 'Z'))
+            char ch = e.KeyChar;
+            if (!Char.IsLetter(ch))
             {
-                return;
-            }
-            if (e.KeyChar >= '0' && e.KeyChar <= '9')
-            {
-                e.KeyChar = ' ';
+                e.Handled = true;
             }
             if (Char.IsControl(e.KeyChar))
             {
@@ -155,15 +152,15 @@ namespace Drinks
                 string size = comboBoxSize.Text;
                 string fruit = textBoxFruit.Text;
                 string sort = textBoxSortOfCoffee.Text;
-                MainForm main = new MainForm();
-                main.ShowDialog();
+               // MainForm main = new MainForm();
+               // main.ShowDialog();
 
                 if (comboBoxType.Text == "Drink")
                 {
                     item = new Drink(name, volume);
                     //item.SetPrice(volume);
                     //dataGridView.Rows.Add();
-
+                    
                 }
 
                 else if (comboBoxType.Text == "Fresh")
