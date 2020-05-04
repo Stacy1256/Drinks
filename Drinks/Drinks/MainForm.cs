@@ -22,19 +22,20 @@ namespace Drinks
         string fileContent = string.Empty;
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
-        BindingSource source = new BindingSource();
+        BindingList<Liquid> bindingList;
+        BindingSource source;// = new BindingSource();
 
         public MainForm()
         {
             InitializeComponent();
             dataGridView.Visible = false;
-            dataGridView.Columns.Add("number", "№");
-            dataGridView.Columns.Add("name", "Name");
-            dataGridView.Columns.Add("size", "Size");
-            dataGridView.Columns.Add("price", "Price");
-            dataGridView.Columns.Add("sort", "Sort of coffee");
-            dataGridView.Columns.Add("coffeine", "Coffeine");
-            dataGridView.Columns.Add("fruit", "Fruit");
+            //dataGridView.Columns.Add("number", "№");
+            //dataGridView.Columns.Add("name", "Name");
+            //dataGridView.Columns.Add("size", "Size");
+            //dataGridView.Columns.Add("price", "Price");
+            //dataGridView.Columns.Add("sort", "Sort of coffee");
+            //dataGridView.Columns.Add("coffeine", "Coffeine");
+            //dataGridView.Columns.Add("fruit", "Fruit");
 
 
         }
@@ -64,56 +65,56 @@ namespace Drinks
                                 liquidOrders.Add(ParseToLiquid(fileContent));
                                // DataSet ds = new DataSet();
                                 //ds.Tables.Add("Store");
-                                string[] str = new string[5];
-                                str = fileContent.Split('-');
-                                if (str[0] == "Drink")
-                                {
-                                    Volume volume = new Volume();
-                                    if (str[2] == "S")
-                                    {
-                                        volume = Volume.S;
-                                    }
-                                    else if (str[2] == "M")
-                                    {
-                                        volume = Volume.M;
-                                    }
-                                    if (str[2] == "L")
-                                    {
-                                        volume = Volume.L;
-                                    }
-                                    Drink item = new Drink(str[1], volume);
-                                    item.SetPrice(volume);
-                                    dataGridView.Rows.Add(item.Name,item.Size,0,0,0,item.Price);
+                                //string[] str = new string[5];
+                                //str = fileContent.Split('-');
+                                //if (str[0] == "Drink")
+                                //{
+                                //    Volume volume = new Volume();
+                                //    if (str[2] == "S")
+                                //    {
+                                //        volume = Volume.S;
+                                //    }
+                                //    else if (str[2] == "M")
+                                //    {
+                                //        volume = Volume.M;
+                                //    }
+                                //    if (str[2] == "L")
+                                //    {
+                                //        volume = Volume.L;
+                                //    }
+                                //    Drink item = new Drink(str[1], volume);
+                                //    item.SetPrice(volume);
+                                //    dataGridView.Rows.Add(item.Name,item.Size,0,0,0,item.Price);
                            
 
-                                }
+                                //}
 
-                                else if (str[0] == "Fresh")
-                                {
-                                    Volume volume = new Volume();
-                                    if (str[2] == "S")
-                                    {
-                                        volume = Volume.S;
-                                    }
-                                    else if (str[2] == "M")
-                                    {
-                                        volume = Volume.M;
-                                    }
-                                    if (str[2] == "L")
-                                    {
-                                        volume = Volume.L;
-                                    }
-                                    Fresh item = new Fresh(str[1], str[3], volume);
-                                    item.SetPrice(volume);
-                                    dataGridView.Rows.Add(item.Name, item.Size, item.Fruit, 0, 0, item.Price);
-                                }
+                                //else if (str[0] == "Fresh")
+                                //{
+                                //    Volume volume = new Volume();
+                                //    if (str[2] == "S")
+                                //    {
+                                //        volume = Volume.S;
+                                //    }
+                                //    else if (str[2] == "M")
+                                //    {
+                                //        volume = Volume.M;
+                                //    }
+                                //    if (str[2] == "L")
+                                //    {
+                                //        volume = Volume.L;
+                                //    }
+                                //    Fresh item = new Fresh(str[1], str[3], volume);
+                                //    item.SetPrice(volume);
+                                //    dataGridView.Rows.Add(item.Name, item.Size, item.Fruit, 0, 0, item.Price);
+                                //}
 
 
-                                else if (str[0] == "Coffee")
-                                {
-                                    CoffeeDrink item = new CoffeeDrink(str[1], Convert.ToBoolean(str[2]));
-                                    dataGridView.Rows.Add(0,0,0,item.SortOfCoffee,item.Coffeine,0);
-                                }
+                                //else if (str[0] == "Coffee")
+                                //{
+                                //    CoffeeDrink item = new CoffeeDrink(str[1], Convert.ToBoolean(str[2]));
+                                //    dataGridView.Rows.Add(0,0,0,item.SortOfCoffee,item.Coffeine,0);
+                                //}
                                 
                             }
                         }
@@ -132,7 +133,24 @@ namespace Drinks
                 MessageBox.Show($"{drink.GetType().ToString()}::{(drink as Drink)?.Name}", "TEEEEEEEEEEST", MessageBoxButtons.OK);
             }
             // Add data from file to dataGridView
-            source.DataSource = liquidOrders;
+            //source.DataSource = liquidOrders;
+            //dataGridView.DataSource = source;
+            //dataGridView.Visible = true;
+
+            var anonLiquid = liquidOrders
+                .Select((x) => new
+                {
+                    Name = (x as Drink)?.Name ?? string.Empty,
+                    Size = (x as Drink)?.Size.ToString() ?? string.Empty,
+                    Price = (x as Drink)?.Price.ToString() ?? string.Empty,
+                    Fruit = (x as Fresh)?.Fruit.ToString() ?? string.Empty,
+                    SortOfCoffee = (x as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
+                    Coffeine = (x as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
+                }).ToList();
+
+            source = new BindingSource();
+            source.DataSource = anonLiquid;
+
             dataGridView.DataSource = source;
             dataGridView.Visible = true;
 
