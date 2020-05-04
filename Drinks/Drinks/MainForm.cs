@@ -62,6 +62,59 @@ namespace Drinks
                             {
                                 fileContent = reader.ReadLine();
                                 liquidOrders.Add(ParseToLiquid(fileContent));
+                               // DataSet ds = new DataSet();
+                                //ds.Tables.Add("Store");
+                                string[] str = new string[5];
+                                str = fileContent.Split('-');
+                                if (str[0] == "Drink")
+                                {
+                                    Volume volume = new Volume();
+                                    if (str[2] == "S")
+                                    {
+                                        volume = Volume.S;
+                                    }
+                                    else if (str[2] == "M")
+                                    {
+                                        volume = Volume.M;
+                                    }
+                                    if (str[2] == "L")
+                                    {
+                                        volume = Volume.L;
+                                    }
+                                    Drink item = new Drink(str[1], volume);
+                                    item.SetPrice(volume);
+                                    dataGridView.Rows.Add(item.Name,item.Size,0,0,0,item.Price);
+                           
+
+                                }
+
+                                else if (str[0] == "Fresh")
+                                {
+                                    Volume volume = new Volume();
+                                    if (str[2] == "S")
+                                    {
+                                        volume = Volume.S;
+                                    }
+                                    else if (str[2] == "M")
+                                    {
+                                        volume = Volume.M;
+                                    }
+                                    if (str[2] == "L")
+                                    {
+                                        volume = Volume.L;
+                                    }
+                                    Fresh item = new Fresh(str[1], str[3], volume);
+                                    item.SetPrice(volume);
+                                    dataGridView.Rows.Add(item.Name, item.Size, item.Fruit, 0, 0, item.Price);
+                                }
+
+
+                                else if (str[0] == "Coffee")
+                                {
+                                    CoffeeDrink item = new CoffeeDrink(str[1], Convert.ToBoolean(str[2]));
+                                    dataGridView.Rows.Add(0,0,0,item.SortOfCoffee,item.Coffeine,0);
+                                }
+                                
                             }
                         }
                     }
@@ -207,17 +260,27 @@ namespace Drinks
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //string name = textBoxName.Text;
+            // string name = ItemForm
             //string size = comboBoxSize.Text;
             //string fruit = textBoxFruit.Text;
             //string sort = textBoxSortOfCoffee.Text;
-            //dataGridViev.
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SampleForm sample = new SampleForm();
             sample.ShowDialog();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            double min = Convert.ToDouble( textBox2.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            double max = Convert.ToDouble(textBox1.Text);
         }
     }
 }

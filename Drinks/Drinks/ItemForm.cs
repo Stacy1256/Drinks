@@ -122,7 +122,7 @@ namespace Drinks
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-            buttonSave.Enabled = false;
+            //buttonSave.Enabled = false;
             if (!String.IsNullOrEmpty(textBoxFruit.Text))
             {
                 buttonSave.Enabled = true;
@@ -131,9 +131,9 @@ namespace Drinks
 
         private void textBoxFruit_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxFruit.Text))
+            if (!String.IsNullOrEmpty(textBoxFruit.Text)&&comboBoxType.Text=="Fresh")
             {
-                buttonSave.Enabled = false;
+                buttonSave.Enabled = true;
             }
         }
 
@@ -150,6 +150,7 @@ namespace Drinks
             }
             else
             {
+                Liquid item;
                 string name = textBoxName.Text;
                 string size = comboBoxSize.Text;
                 string fruit = textBoxFruit.Text;
@@ -159,19 +160,21 @@ namespace Drinks
 
                 if (comboBoxType.Text == "Drink")
                 {
-                    Drink item = new Drink(name, volume);
-                    item.SetPrice(volume);
+                    item = new Drink(name, volume);
+                    //item.SetPrice(volume);
+                    //dataGridView.Rows.Add();
+
                 }
 
                 else if (comboBoxType.Text == "Fresh")
                 {
-                    Fresh item = new Fresh(name, fruit, volume);
-                    item.SetPrice(volume);
+                    item = new Fresh(name, fruit, volume);
+                   // item.SetPrice(volume);
                 }
 
-                if (comboBoxType.Text == "Coffee")
+                else if (comboBoxType.Text == "Coffee")
                 {
-                    CoffeeDrink item = new CoffeeDrink(sort, radioButtonCoffeine.Checked);
+                     item = new CoffeeDrink(sort, radioButtonCoffeine.Checked);
                 }
 
                 // dataGridViev.
