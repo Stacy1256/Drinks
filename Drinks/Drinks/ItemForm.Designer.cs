@@ -86,31 +86,36 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(200, 64);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(284, 22);
             this.textBoxName.TabIndex = 6;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // textBoxFruit
             // 
             this.textBoxFruit.Location = new System.Drawing.Point(200, 146);
-            this.textBoxFruit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxFruit.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxFruit.Name = "textBoxFruit";
             this.textBoxFruit.Size = new System.Drawing.Size(284, 22);
             this.textBoxFruit.TabIndex = 7;
+            this.textBoxFruit.TextChanged += new System.EventHandler(this.textBoxFruit_TextChanged);
+            this.textBoxFruit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
             // 
             // textBoxSortOfCoffee
             // 
             this.textBoxSortOfCoffee.Location = new System.Drawing.Point(200, 185);
-            this.textBoxSortOfCoffee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxSortOfCoffee.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSortOfCoffee.Name = "textBoxSortOfCoffee";
             this.textBoxSortOfCoffee.Size = new System.Drawing.Size(284, 22);
             this.textBoxSortOfCoffee.TabIndex = 8;
+            this.textBoxSortOfCoffee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
             // 
             // buttonSave
             // 
+            this.buttonSave.Enabled = false;
             this.buttonSave.Location = new System.Drawing.Point(109, 273);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(129, 48);
             this.buttonSave.TabIndex = 9;
@@ -121,7 +126,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(307, 273);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(137, 48);
             this.buttonCancel.TabIndex = 10;
@@ -133,7 +138,7 @@
             // 
             this.radioButtonCoffeine.AutoSize = true;
             this.radioButtonCoffeine.Location = new System.Drawing.Point(200, 228);
-            this.radioButtonCoffeine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonCoffeine.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonCoffeine.Name = "radioButtonCoffeine";
             this.radioButtonCoffeine.Size = new System.Drawing.Size(81, 21);
             this.radioButtonCoffeine.TabIndex = 11;
@@ -146,19 +151,25 @@
             // 
             this.comboBoxSize.FormattingEnabled = true;
             this.comboBoxSize.Location = new System.Drawing.Point(200, 98);
-            this.comboBoxSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxSize.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSize.Name = "comboBoxSize";
             this.comboBoxSize.Size = new System.Drawing.Size(284, 24);
             this.comboBoxSize.TabIndex = 12;
+            this.comboBoxSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxSize_SelectedIndexChanged);
             // 
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
+            "Drink",
+            "Fresh",
+            "Coffee"});
             this.comboBoxType.Location = new System.Drawing.Point(156, 16);
-            this.comboBoxType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(259, 24);
             this.comboBoxType.TabIndex = 13;
+            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
             // ItemForm
             // 
@@ -178,7 +189,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelName);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ItemForm";
             this.Text = "ItemForm";
             this.ResumeLayout(false);

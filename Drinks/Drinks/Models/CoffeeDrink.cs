@@ -17,7 +17,7 @@ namespace Drinks.Models
         {
             if (string.IsNullOrEmpty(sort))
             {
-                throw new ArgumentNullException(nameof(sort));
+                //throw new ArgumentNullException(nameof(sort));
             }
 
             SortOfCoffee = sort;

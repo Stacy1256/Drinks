@@ -38,3 +38,17 @@ C:\Olena\Project\Drinks_another\Drinks\Drinks\Drinks\obj\Debug\Drinks.pdb
 C:\Olena\Project\Drinks_another\Drinks\Drinks\Drinks\bin\Debug\Drinks.exe.config
 C:\Olena\Project\Drinks_another\Drinks\Drinks\Drinks\bin\Debug\Drinks.exe
 C:\Olena\Project\Drinks_another\Drinks\Drinks\Drinks\bin\Debug\Drinks.pdb
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\bin\Debug\Drinks.exe.config
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\bin\Debug\Drinks.exe
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\bin\Debug\Drinks.pdb
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.About_author.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.ItemForm.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.MainForm.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.Properties.Resources.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.SplashForm.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.View_help.resources
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.csproj.GenerateResource.cache
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.exe
+C:\Users\User\Desktop\Giiiit\Drinks\Drinks\Drinks\obj\Debug\Drinks.pdb

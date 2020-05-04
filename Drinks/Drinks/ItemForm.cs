@@ -23,46 +23,159 @@ namespace Drinks
             comboBoxSize.Items.Add(Volume.L);
 
         }
-        
+
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        bool caffeine = false;
+        
+        //bool caffeine = false;
 
         private void radioButtonCoffeine_CheckedChanged(object sender, EventArgs e)
         {
-            caffeine = true;
+            //caffeine = true;
+        }
+
+       
+          
+
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxType.Text == "Drink")
+            {
+                textBoxName.Enabled = true;
+                comboBoxSize.Enabled = true;
+                textBoxFruit.Enabled = false;
+                textBoxSortOfCoffee.Enabled = false;
+                radioButtonCoffeine.Enabled = false;
+                buttonSave.Enabled = true;
+            }
+            else if (comboBoxType.Text == "Fresh")
+            {
+                textBoxName.Enabled = true;
+                comboBoxSize.Enabled = true;
+                textBoxFruit.Enabled = true;
+                textBoxSortOfCoffee.Enabled = false;
+                radioButtonCoffeine.Enabled = false;
+                buttonSave.Enabled = true;
+            }
+            else if (comboBoxType.Text == "Coffee")
+            {
+                textBoxName.Enabled = false;
+                comboBoxSize.Enabled = false;
+                textBoxFruit.Enabled = false;
+                textBoxSortOfCoffee.Enabled = true;
+                radioButtonCoffeine.Enabled = true;
+                buttonSave.Enabled = true;
+            }
+            else if (comboBoxType.Text != "Coffee" || comboBoxType.Text != "Drink" || comboBoxType.Text != "Fresh")
+            {
+                textBoxName.Enabled = false;
+                comboBoxSize.Enabled = false;
+                textBoxFruit.Enabled = false;
+                textBoxSortOfCoffee.Enabled = false;
+                radioButtonCoffeine.Enabled = false;
+                buttonSave.Enabled = false;
+            }
+        }
+
+        private void textBoxFruit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= 'A' && e.KeyChar <= 'Z'))
+            {
+                return;
+            }
+            if (e.KeyChar >= '0' && e.KeyChar <= '9')
+            {
+                e.KeyChar = ' ';
+            }
+            if (Char.IsControl(e.KeyChar))
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    if (sender.Equals(textBoxFruit))
+                    {
+                        buttonSave.Focus();
+                    }
+                }
+
+            }
+        }
+
+        Volume volume = new Volume();
+        private void comboBoxSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSize.Text == "S")
+            {
+                volume = Volume.S;
+            }
+            else if (comboBoxSize.Text == "M")
+            {
+                volume = Volume.M;
+            }
+            if (comboBoxSize.Text == "L")
+            {
+                volume = Volume.L;
+            }
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            buttonSave.Enabled = false;
+            if (!String.IsNullOrEmpty(textBoxFruit.Text))
+            {
+                buttonSave.Enabled = true;
+            }
+        }
+
+        private void textBoxFruit_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxFruit.Text))
+            {
+                buttonSave.Enabled = false;
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // Close();
-            string name = textBoxName.Text;
-            string size = comboBoxSize.Text;
-            string fruit = textBoxFruit.Text;
-            string sort = textBoxSortOfCoffee.Text;
-            MainForm main = new MainForm();
-            main.ShowDialog();
-            if (comboBoxType.Text == "Drink")
+            if (String.IsNullOrEmpty(textBoxName.Text) && comboBoxType.Text != "Coffee")
             {
-                Drink item = new Drink(name);
-                // how to add volume and price?
+                MessageBox.Show("name is empty", "Warning", MessageBoxButtons.OK);
             }
-            if (comboBoxType.Text == "Fresh")
+            if (String.IsNullOrEmpty(textBoxSortOfCoffee.Text) && comboBoxType.Text == "Coffee")
             {
-                Fresh item = new Fresh(name, fruit);
+                MessageBox.Show("Sort is empty", "Warning", MessageBoxButtons.OK);
             }
-            // how to add volume and price?
-            if(comboBoxType.Text == "Coffee")
+            else
             {
-                CoffeeDrink item = new CoffeeDrink(sort, caffeine);
-            }
-          
-           // dataGridViev.
-        }
+                string name = textBoxName.Text;
+                string size = comboBoxSize.Text;
+                string fruit = textBoxFruit.Text;
+                string sort = textBoxSortOfCoffee.Text;
+                MainForm main = new MainForm();
+                main.ShowDialog();
 
+                if (comboBoxType.Text == "Drink")
+                {
+                    Drink item = new Drink(name, volume);
+                    item.SetPrice(volume);
+                }
+
+                else if (comboBoxType.Text == "Fresh")
+                {
+                    Fresh item = new Fresh(name, fruit, volume);
+                    item.SetPrice(volume);
+                }
+
+                if (comboBoxType.Text == "Coffee")
+                {
+                    CoffeeDrink item = new CoffeeDrink(sort, radioButtonCoffeine.Checked);
+                }
+
+                // dataGridViev.
+            }
+        }
     }
 }

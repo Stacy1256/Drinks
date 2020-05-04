@@ -16,7 +16,7 @@ namespace Drinks.Models
         {
             if (string.IsNullOrEmpty(name))
             {
-                throw new ArgumentNullException(nameof(name));
+                //throw new ArgumentNullException(nameof(name));
             }
 
             Name = name;
