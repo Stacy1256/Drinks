@@ -18,11 +18,15 @@ namespace Drinks
     {
         const string messageWarningCreatenew = "Your data is not saved! Do you want to close it and create new document? (Your changes won't be saved)";
         const string messageWarningSaveNothing = "Nothing to save. Add your data!";
+        const string messageCreatedNew = "You created a new catalog";
+        const string messageAddToNothing = "At first, please, create a new catalog";
+        const string messageWarningClose = "Your data is not saved! Do you want to close form? (Your changes won't be saved)";
+
 
         string fileContent = string.Empty;
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
-        BindingList<Liquid> bindingList;
+        //BindingList<Liquid> bindingList;
         BindingSource source;// = new BindingSource();
 
         public MainForm()
@@ -138,15 +142,7 @@ namespace Drinks
             //dataGridView.Visible = true;
 
             var anonLiquid = liquidOrders
-                .Select((x) => new
-                {
-                    Name = (x as Drink)?.Name ?? string.Empty,
-                    Size = (x as Drink)?.Size.ToString() ?? string.Empty,
-                    Price = (x as Drink)?.Price.ToString() ?? string.Empty,
-                    Fruit = (x as Fresh)?.Fruit.ToString() ?? string.Empty,
-                    SortOfCoffee = (x as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
-                    Coffeine = (x as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
-                }).ToList();
+                .Select(GetAnonymous).ToList();
 
             source = new BindingSource();
             source.DataSource = anonLiquid;
@@ -189,8 +185,22 @@ namespace Drinks
                     item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
                     return item;
                 default:
-                    return new Liquid();
+                    throw new Exception("Not a Liquid type");
+                    //return new Liquid();
             }
+        }
+
+        public object GetAnonymous(Liquid liquid)
+        {
+            return new
+            {
+                Name = (liquid as Drink)?.Name ?? string.Empty,
+                Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
+                Price = (liquid as Drink)?.Price.ToString() ?? string.Empty,
+                Fruit = (liquid as Fresh)?.Fruit.ToString() ?? string.Empty,
+                SortOfCoffee = (liquid as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
+                Coffeine = (liquid as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
+            };
         }
 
 
@@ -198,19 +208,25 @@ namespace Drinks
         {
             if (liquidOrders.Any())
             {
-
                 var result = MessageBox.Show(messageWarningCreatenew, "Warning", MessageBoxButtons.OKCancel);
 
-                if (result == DialogResult.OK)
+                if (result == DialogResult.Cancel)
                 {
-                    // Something TO DO
+                    return;
                 }
+            }
 
-            }
-            else
-            {
-                // Something TO DO
-            }
+            // Something TO DO Create new, not save
+
+            liquidOrders = new List<Liquid>();
+            source = new BindingSource();
+
+            dataGridView.DataSource = source;
+            dataGridView.Visible = true;
+
+            filePath = @"C:\";
+
+            MessageBox.Show(messageCreatedNew, "Info", MessageBoxButtons.OK);
 
         }
 
@@ -231,18 +247,78 @@ namespace Drinks
         {
             // Write data from dataGridview to file with new name
             // Use SaveFileDialog
+            if (!liquidOrders.Any())
+            {
+                MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                // Write data from LIST to file which was opened
+                // Use SaveFileDialog
+                using (SaveFileDialog saveFile = new SaveFileDialog())
+                {
+                    saveFile.FileName = "unknown.txt";
+                    saveFile.Filter = "Text files (*.txt)|*.txt";
+                    saveFile.RestoreDirectory = true;
+
+                    if (saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        using (StreamWriter outputFile = new StreamWriter(Path.Combine(filePath, saveFile.FileName)))
+                        {
+                            foreach (Liquid item in liquidOrders)
+                                outputFile.WriteLine(WritingLiquidInfoToString(item));
+                        }
+                    }
+                }
+                MessageBox.Show("Everything is OK! It works!");
+            }
+        }
+
+        public string WritingLiquidInfoToString(Liquid liquid)
+        {
+            if (liquid is Drink d)
+                return $"Drink-{d.Name}-{d.Size}";
+            else if (liquid is Fresh f)
+                return $"Fresh-{f.Name}-{f.Size}-{f.Fruit}";
+            else if (liquid is CoffeeDrink c)
+                return $"CoffeeDrink-{c.SortOfCoffee}-{c.Coffeine}";
+            else
+                return null;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Maybe add warning (MassageBox) ???
+            if (liquidOrders.Any()) // Maybe BUUUUUUUUG
+            {
+                var result = MessageBox.Show(messageWarningClose, "Warning", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
+
             this.Close();
         }
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ItemForm newItem = new ItemForm();
-            newItem.ShowDialog();
+            if (!(liquidOrders.Any()) & string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var liquid = new Drink("topo", Volume.M) as Liquid;
+                liquidOrders.Add(liquid);
+                source.Add(GetAnonymous(liquid));
+
+
+                ItemForm newItem = new ItemForm();
+                newItem.ShowDialog();
+
+            }
+
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
@@ -257,7 +333,7 @@ namespace Drinks
 
         private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView.Visible = false;
+            //dataGridView.Visible = false;
             // Something TO DO
             View_help help = new View_help();
             help.ShowDialog();
@@ -265,7 +341,7 @@ namespace Drinks
 
         private void aboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView.Visible = false;
+            //dataGridView.Visible = false;
             // Something TO DO
             About_author about = new About_author();
             about.ShowDialog();

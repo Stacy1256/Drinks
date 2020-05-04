@@ -13,14 +13,14 @@ namespace Drinks
 {
     public partial class ItemForm : Form
     {
-        Liquid new_drink = new Liquid();
+        Liquid new_drink;
 
         public ItemForm()
         {
             InitializeComponent();
-            comboBoxSize.Items.Add(Volume.S);
-            comboBoxSize.Items.Add(Volume.M);
-            comboBoxSize.Items.Add(Volume.L);
+            //comboBoxSize.Items.Add(Volume.S);
+            //comboBoxSize.Items.Add(Volume.M);
+            //comboBoxSize.Items.Add(Volume.L);
 
         }
 
