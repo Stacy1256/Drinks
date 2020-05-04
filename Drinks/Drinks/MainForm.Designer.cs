@@ -265,11 +265,12 @@
             "Drink",
             "Fresh",
             "Coffee"});
-            this.comboBox1.Location = new System.Drawing.Point(539, 334);
+            this.comboBox1.Location = new System.Drawing.Point(539, 338);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.Text = "Select Type";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -278,29 +279,30 @@
             "S",
             "M",
             "L"});
-            this.comboBox2.Location = new System.Drawing.Point(381, 334);
+            this.comboBox2.Location = new System.Drawing.Point(381, 338);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(135, 28);
             this.comboBox2.TabIndex = 4;
             this.comboBox2.Text = "Select Volume";
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(127, 344);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(84, 26);
+            this.textBox1.Size = new System.Drawing.Size(53, 26);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "max price";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 343);
+            this.textBox2.Location = new System.Drawing.Point(44, 343);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(80, 26);
+            this.textBox2.Size = new System.Drawing.Size(51, 26);
             this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "min price";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // button1
             // 
@@ -335,7 +337,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
-           // this.Name = "MainForm";
+     //       this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Drinks";
             this.menuStrip.ResumeLayout(false);

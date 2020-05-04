@@ -63,7 +63,7 @@ namespace Drinks
                             {
                                 fileContent = reader.ReadLine();
                                 liquidOrders.Add(ParseToLiquid(fileContent));
-                               // DataSet ds = new DataSet();
+                                // DataSet ds = new DataSet();
                                 //ds.Tables.Add("Store");
                                 //string[] str = new string[5];
                                 //str = fileContent.Split('-');
@@ -85,7 +85,7 @@ namespace Drinks
                                 //    Drink item = new Drink(str[1], volume);
                                 //    item.SetPrice(volume);
                                 //    dataGridView.Rows.Add(item.Name,item.Size,0,0,0,item.Price);
-                           
+
 
                                 //}
 
@@ -115,7 +115,7 @@ namespace Drinks
                                 //    CoffeeDrink item = new CoffeeDrink(str[1], Convert.ToBoolean(str[2]));
                                 //    dataGridView.Rows.Add(0,0,0,item.SortOfCoffee,item.Coffeine,0);
                                 //}
-                                
+
                             }
                         }
                     }
@@ -192,7 +192,7 @@ namespace Drinks
                     return new Liquid();
             }
         }
-        
+
 
         private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -282,23 +282,64 @@ namespace Drinks
             //string size = comboBoxSize.Text;
             //string fruit = textBoxFruit.Text;
             //string sort = textBoxSortOfCoffee.Text;
-           
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        }
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SampleForm sample = new SampleForm();
-            sample.ShowDialog();
+            char ch = e.KeyChar;
+            if (!Char.IsDigit(ch) && ch != ',')
+            {
+                e.Handled = true;
+            }
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            double min = Convert.ToDouble( textBox2.Text);
+
+            double min = Convert.ToDouble(textBox2.Text);
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
             double max = Convert.ToDouble(textBox1.Text);
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Volume vol = ParseToVolume(comboBox2.Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string type = comboBox1.Text;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToDouble(textBox1.Text) < Convert.ToDouble(textBox2.Text))
+            {
+                MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
+            }
+            SampleForm sample = new SampleForm();
+            sample.ShowDialog();
+        }
+
+        private void Sort_by_prise(Drink[] arr, int size)
+        {
+            for (int i = 0; i < size - 1; i++)
+            {
+                if (arr[i].Price < arr[i + 1].Price)
+                {
+                    Drink k = arr[1];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = k;
+
+                }
+            }
+        }
+
+
     }
+
+
 }
