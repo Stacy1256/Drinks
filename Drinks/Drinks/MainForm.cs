@@ -21,7 +21,7 @@ namespace Drinks
         const string messageCreatedNew = "You created a new catalog";
         const string messageAddToNothing = "At first, please, create a new catalog";
         const string messageWarningClose = "Your data is not saved! Do you want to close form? (Your changes won't be saved)";
-
+        const string messageFailedSave = "File is not saved! You must specify a name for a new file.Please, use \"Save As\" for it.";
 
         string fileContent = string.Empty;
         string filePath = string.Empty;
@@ -51,13 +51,13 @@ namespace Drinks
                 openFile.Title = "Select a document";
                 openFile.Filter = "txt files (*.txt)|*.txt";
                 openFile.Multiselect = false;
+                openFile.RestoreDirectory = true;
 
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
                         filePath = openFile.FileName;
-
                         //Read the contents of the file into a stream
                         var fileStream = openFile.OpenFile();
 
@@ -129,11 +129,14 @@ namespace Drinks
                             $"Details:\n\n{ex.StackTrace}");
                     }
                 }
+                else
+                {
+                    return;
+                }
             }
-            MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
+            //MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
             foreach (Liquid drink in liquidOrders)
             {
-
                 MessageBox.Show($"{drink.GetType().ToString()}::{(drink as Drink)?.Name}", "TEEEEEEEEEEST", MessageBoxButtons.OK);
             }
             // Add data from file to dataGridView
@@ -215,8 +218,7 @@ namespace Drinks
                     return;
                 }
             }
-
-            // Something TO DO Create new, not save
+            
 
             liquidOrders = new List<Liquid>();
             source = new BindingSource();
@@ -224,7 +226,10 @@ namespace Drinks
             dataGridView.DataSource = source;
             dataGridView.Visible = true;
 
-            filePath = @"C:\";
+            filePath = @"C:\Olena\Project\Drinks\Orders";//\MyTest.txt";
+
+            if (!File.Exists(filePath))
+                MessageBox.Show(filePath);
 
             MessageBox.Show(messageCreatedNew, "Info", MessageBoxButtons.OK);
 
@@ -232,29 +237,60 @@ namespace Drinks
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!liquidOrders.Any())
+            if (!liquidOrders.Any() || string.IsNullOrEmpty(filePath))
             {
                 MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
             }
             else
             {
-                // Write data from LIST to file which was opened
-                // Use SaveFileDialog
+                if (File.Exists(filePath))
+                {
+                    string createText = null;
+                    foreach (Liquid item in liquidOrders)
+                        createText += WritingLiquidInfoToString(item) + Environment.NewLine;
+                    File.WriteAllText(filePath, createText);
+                    MessageBox.Show("Congratulation! File is saved!", "Success", MessageBoxButtons.OK);
+                }
+                if (!File.Exists(filePath))
+                    MessageBox.Show(messageFailedSave, "Failed", MessageBoxButtons.OK);
+
+                //Write data from LIST to file which was opened
+                //Use SaveFileDialog
+                //using (SaveFileDialog saveFile = new SaveFileDialog())
+                //{
+                //    saveFile.FileName = filePath;
+                //    saveFile.Filter = "Text files (*.txt)|*.txt";
+                //    saveFile.RestoreDirectory = true;
+
+                //    if (saveFile.ShowDialog() == DialogResult.OK)
+                //    {
+                //        //using (StreamWriter outputFile = new StreamWriter(Path.Combine(filePath)))
+                //        //{
+                //        //    foreach (Liquid item in liquidOrders)
+                //        //        outputFile.WriteLine(WritingLiquidInfoToString(item));
+                //        //}
+                //        if (File.Exists(filePath))
+                //        {
+                //            string createText = null;
+                //            foreach (Liquid item in liquidOrders)
+                //                createText += WritingLiquidInfoToString(item) + Environment.NewLine;
+                //            File.WriteAllText(filePath, createText);
+                //        }
+                //    }
+                //}
+                //MessageBox.Show("Everything is OK! It works!");
+
             }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Write data from dataGridview to file with new name
-            // Use SaveFileDialog
             if (!liquidOrders.Any())
             {
                 MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
             }
             else
             {
-                // Write data from LIST to file which was opened
-                // Use SaveFileDialog
                 using (SaveFileDialog saveFile = new SaveFileDialog())
                 {
                     saveFile.FileName = "unknown.txt";
@@ -268,6 +304,10 @@ namespace Drinks
                             foreach (Liquid item in liquidOrders)
                                 outputFile.WriteLine(WritingLiquidInfoToString(item));
                         }
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
                 MessageBox.Show("Everything is OK! It works!");
@@ -303,7 +343,7 @@ namespace Drinks
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!(liquidOrders.Any()) & string.IsNullOrEmpty(filePath))
+            if (!(liquidOrders.Any()) && string.IsNullOrEmpty(filePath))
             {
                 MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK);
             }
