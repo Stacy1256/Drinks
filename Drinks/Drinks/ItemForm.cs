@@ -160,7 +160,9 @@ namespace Drinks
                     item = new Drink(name, volume);
                     //item.SetPrice(volume);
                     //dataGridView.Rows.Add();
-                    
+                    var liquid = new Drink(name, volume) as Liquid;
+                    //liquidOrders.Add(liquid);
+                    //source.Add(GetAnonymous(liquid));
                 }
 
                 else if (comboBoxType.Text == "Fresh")
@@ -176,6 +178,11 @@ namespace Drinks
 
                 // dataGridViev.
             }
+        }
+
+        private void textBoxSortOfCoffee_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

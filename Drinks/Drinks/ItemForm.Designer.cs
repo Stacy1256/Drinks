@@ -113,6 +113,7 @@
             this.textBoxSortOfCoffee.Name = "textBoxSortOfCoffee";
             this.textBoxSortOfCoffee.Size = new System.Drawing.Size(284, 22);
             this.textBoxSortOfCoffee.TabIndex = 8;
+            this.textBoxSortOfCoffee.TextChanged += new System.EventHandler(this.textBoxSortOfCoffee_TextChanged);
             this.textBoxSortOfCoffee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
             // 
             // buttonSave
@@ -156,6 +157,10 @@
             // comboBoxSize
             // 
             this.comboBoxSize.FormattingEnabled = true;
+            this.comboBoxSize.Items.AddRange(new object[] {
+            "S",
+            "M",
+            "L"});
             this.comboBoxSize.Location = new System.Drawing.Point(200, 98);
             this.comboBoxSize.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSize.Name = "comboBoxSize";

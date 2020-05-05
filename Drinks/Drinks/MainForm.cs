@@ -392,10 +392,10 @@ namespace Drinks
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Convert.ToDouble(textBox1.Text) < Convert.ToDouble(textBox2.Text))
-            {
-                MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
-            }
+            //if (Convert.ToDouble(textBox1.Text) < Convert.ToDouble(textBox2.Text))
+            //{
+            //    MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
+           // }
             SampleForm sample = new SampleForm();
             sample.ShowDialog();
         }

@@ -44,12 +44,6 @@
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutAuthorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fruit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sortofcoffee = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Caffeine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -185,14 +179,9 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.LavenderBlush;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Size,
-            this.Fruit,
-            this.Sortofcoffee,
-            this.Caffeine,
-            this.Price});
+            this.dataGridView.GridColor = System.Drawing.Color.Black;
             this.dataGridView.Location = new System.Drawing.Point(13, 56);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
@@ -201,42 +190,6 @@
             this.dataGridView.Size = new System.Drawing.Size(679, 319);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Size
-            // 
-            this.Size.HeaderText = "Size";
-            this.Size.Name = "Size";
-            this.Size.ReadOnly = true;
-            // 
-            // Fruit
-            // 
-            this.Fruit.HeaderText = "Fruit";
-            this.Fruit.Name = "Fruit";
-            this.Fruit.ReadOnly = true;
-            // 
-            // Sortofcoffee
-            // 
-            this.Sortofcoffee.HeaderText = "Sort of coffee";
-            this.Sortofcoffee.Name = "Sortofcoffee";
-            this.Sortofcoffee.ReadOnly = true;
-            // 
-            // Caffeine
-            // 
-            this.Caffeine.HeaderText = "Caffeine";
-            this.Caffeine.Name = "Caffeine";
-            this.Caffeine.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             // 
             // label1
             // 
@@ -337,7 +290,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);
-     //       this.Name = "MainForm";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Drinks";
             this.menuStrip.ResumeLayout(false);
@@ -365,12 +318,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutAuthorToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Size;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fruit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sortofcoffee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Caffeine;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
