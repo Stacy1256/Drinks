@@ -184,5 +184,10 @@ namespace Drinks
         {
 
         }
+
+        private void ItemForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

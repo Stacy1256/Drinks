@@ -36,15 +36,16 @@ namespace Drinks
             // 
             // progressBar1
             // 
-            this.progressBar1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.progressBar1.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.progressBar1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.progressBar1.BackColor = System.Drawing.Color.Crimson;
+            this.progressBar1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.progressBar1.ForeColor = System.Drawing.Color.Violet;
             this.progressBar1.Location = new System.Drawing.Point(17, 384);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(500, 28);
             this.progressBar1.TabIndex = 0;
-            //
-            //
+            // 
             // SplashForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -53,8 +54,9 @@ namespace Drinks
             this.ClientSize = new System.Drawing.Size(533, 431);
             this.ControlBox = false;
             this.Controls.Add(this.progressBar1);
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(533, 431);
             this.MinimizeBox = false;

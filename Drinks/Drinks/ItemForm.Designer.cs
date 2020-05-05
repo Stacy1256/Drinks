@@ -41,16 +41,18 @@
             this.radioButtonCoffeine = new System.Windows.Forms.RadioButton();
             this.comboBoxSize = new System.Windows.Forms.ComboBox();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
             this.labelName.BackColor = System.Drawing.Color.LavenderBlush;
-            this.labelName.Location = new System.Drawing.Point(51, 68);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(42, 130);
+            this.labelName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(45, 17);
+            this.labelName.Size = new System.Drawing.Size(70, 33);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Name";
             // 
@@ -58,10 +60,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.label1.Location = new System.Drawing.Point(51, 110);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(42, 203);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
+            this.label1.Size = new System.Drawing.Size(52, 33);
             this.label1.TabIndex = 1;
             this.label1.Text = "Size";
             // 
@@ -69,10 +71,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.LavenderBlush;
-            this.label2.Location = new System.Drawing.Point(51, 150);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(42, 288);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 17);
+            this.label2.Size = new System.Drawing.Size(62, 33);
             this.label2.TabIndex = 3;
             this.label2.Text = "Fruit";
             // 
@@ -80,50 +82,57 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LavenderBlush;
-            this.label3.Location = new System.Drawing.Point(51, 188);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(42, 361);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 17);
+            this.label3.Size = new System.Drawing.Size(146, 33);
             this.label3.TabIndex = 4;
             this.label3.Text = "Sort of coffee";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(200, 64);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxName.Location = new System.Drawing.Point(196, 125);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(284, 22);
+            this.textBoxName.Size = new System.Drawing.Size(403, 39);
             this.textBoxName.TabIndex = 6;
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // textBoxFruit
             // 
-            this.textBoxFruit.Location = new System.Drawing.Point(200, 146);
-            this.textBoxFruit.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxFruit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFruit.Location = new System.Drawing.Point(199, 284);
+            this.textBoxFruit.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxFruit.Name = "textBoxFruit";
-            this.textBoxFruit.Size = new System.Drawing.Size(284, 22);
+            this.textBoxFruit.Size = new System.Drawing.Size(400, 39);
             this.textBoxFruit.TabIndex = 7;
             this.textBoxFruit.TextChanged += new System.EventHandler(this.textBoxFruit_TextChanged);
             this.textBoxFruit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
             // 
             // textBoxSortOfCoffee
             // 
-            this.textBoxSortOfCoffee.Location = new System.Drawing.Point(200, 185);
-            this.textBoxSortOfCoffee.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxSortOfCoffee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSortOfCoffee.Location = new System.Drawing.Point(199, 359);
+            this.textBoxSortOfCoffee.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxSortOfCoffee.Name = "textBoxSortOfCoffee";
-            this.textBoxSortOfCoffee.Size = new System.Drawing.Size(284, 22);
+            this.textBoxSortOfCoffee.Size = new System.Drawing.Size(400, 39);
             this.textBoxSortOfCoffee.TabIndex = 8;
             this.textBoxSortOfCoffee.TextChanged += new System.EventHandler(this.textBoxSortOfCoffee_TextChanged);
             this.textBoxSortOfCoffee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
             // 
             // buttonSave
             // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSave.BackColor = System.Drawing.Color.LavenderBlush;
             this.buttonSave.Enabled = false;
-            this.buttonSave.Location = new System.Drawing.Point(109, 273);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSave.Location = new System.Drawing.Point(240, 487);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(129, 48);
+            this.buttonSave.Size = new System.Drawing.Size(161, 58);
             this.buttonSave.TabIndex = 9;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -131,11 +140,12 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.BackColor = System.Drawing.Color.LavenderBlush;
-            this.buttonCancel.Location = new System.Drawing.Point(307, 273);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(438, 487);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(137, 48);
+            this.buttonCancel.Size = new System.Drawing.Size(161, 58);
             this.buttonCancel.TabIndex = 10;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = false;
@@ -143,11 +153,13 @@
             // 
             // radioButtonCoffeine
             // 
+            this.radioButtonCoffeine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radioButtonCoffeine.AutoSize = true;
-            this.radioButtonCoffeine.Location = new System.Drawing.Point(200, 228);
-            this.radioButtonCoffeine.Margin = new System.Windows.Forms.Padding(4);
+            this.radioButtonCoffeine.Location = new System.Drawing.Point(269, 414);
+            this.radioButtonCoffeine.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.radioButtonCoffeine.Name = "radioButtonCoffeine";
-            this.radioButtonCoffeine.Size = new System.Drawing.Size(81, 21);
+            this.radioButtonCoffeine.Size = new System.Drawing.Size(112, 37);
             this.radioButtonCoffeine.TabIndex = 11;
             this.radioButtonCoffeine.TabStop = true;
             this.radioButtonCoffeine.Text = "Coffeine";
@@ -156,38 +168,53 @@
             // 
             // comboBoxSize
             // 
+            this.comboBoxSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSize.FormattingEnabled = true;
             this.comboBoxSize.Items.AddRange(new object[] {
             "S",
             "M",
             "L"});
-            this.comboBoxSize.Location = new System.Drawing.Point(200, 98);
-            this.comboBoxSize.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxSize.Location = new System.Drawing.Point(196, 202);
+            this.comboBoxSize.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.comboBoxSize.Name = "comboBoxSize";
-            this.comboBoxSize.Size = new System.Drawing.Size(284, 24);
+            this.comboBoxSize.Size = new System.Drawing.Size(403, 39);
             this.comboBoxSize.TabIndex = 12;
             this.comboBoxSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxSize_SelectedIndexChanged);
             // 
             // comboBoxType
             // 
+            this.comboBoxType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Drink",
             "Fresh",
             "Coffee"});
-            this.comboBoxType.Location = new System.Drawing.Point(156, 16);
-            this.comboBoxType.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxType.Location = new System.Drawing.Point(158, 44);
+            this.comboBoxType.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(259, 24);
+            this.comboBoxType.Size = new System.Drawing.Size(401, 39);
             this.comboBoxType.TabIndex = 13;
             this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(13, 411);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(134, 136);
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
             // ItemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightPink;
-            this.ClientSize = new System.Drawing.Size(579, 346);
+            this.ClientSize = new System.Drawing.Size(641, 562);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.comboBoxSize);
             this.Controls.Add(this.radioButtonCoffeine);
@@ -200,11 +227,18 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelName);
+            this.Controls.Add(this.pictureBox1);
+            this.Font = new System.Drawing.Font("Segoe Print", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.MaximumSize = new System.Drawing.Size(874, 708);
+            this.MinimumSize = new System.Drawing.Size(570, 596);
             this.Name = "ItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ItemForm";
+            this.Text = "New order";
+            this.Load += new System.EventHandler(this.ItemForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,5 +258,6 @@
         private System.Windows.Forms.RadioButton radioButtonCoffeine;
         private System.Windows.Forms.ComboBox comboBoxSize;
         private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

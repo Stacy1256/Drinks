@@ -38,28 +38,30 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Cornsilk;
             this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.label1.Font = new System.Drawing.Font("MV Boli", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label1.Location = new System.Drawing.Point(5, 83);
+            this.label1.Location = new System.Drawing.Point(50, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(823, 25);
+            this.label1.Size = new System.Drawing.Size(474, 50);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Is a soft drink ordering program that automatically sets the price for your order" +
-    " and size";
+            this.label1.Text = "Is a soft drink ordering program that automatically\r\n sets the price for your ord" +
+    "er and size";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.PeachPuff;
             this.label2.Cursor = System.Windows.Forms.Cursors.Cross;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(147, 20);
+            this.label2.Location = new System.Drawing.Point(106, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(363, 35);
@@ -70,23 +72,25 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(248, 122);
+            this.pictureBox1.Location = new System.Drawing.Point(223, 133);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(131, 138);
+            this.pictureBox1.Size = new System.Drawing.Size(131, 131);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.button1.BackColor = System.Drawing.Color.LavenderBlush;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.button1.Location = new System.Drawing.Point(241, 315);
+            this.button1.Location = new System.Drawing.Point(223, 315);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 55);
+            this.button1.Size = new System.Drawing.Size(146, 48);
             this.button1.TabIndex = 3;
             this.button1.Text = "Thank You!";
             this.button1.UseVisualStyleBackColor = false;
@@ -97,7 +101,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
-            this.ClientSize = new System.Drawing.Size(656, 400);
+            this.ClientSize = new System.Drawing.Size(579, 407);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
@@ -106,6 +110,8 @@
             this.ForeColor = System.Drawing.Color.Violet;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.MaximumSize = new System.Drawing.Size(1085, 463);
+            this.MinimumSize = new System.Drawing.Size(512, 454);
             this.Name = "View_help";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "View help";
