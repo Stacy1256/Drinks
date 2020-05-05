@@ -22,6 +22,7 @@ namespace Drinks
         const string messageAddToNothing = "At first, please, create a new catalog";
         const string messageWarningClose = "Your data is not saved! Do you want to close form? (Your changes won't be saved)";
         const string messageFailedSave = "File is not saved! You must specify a name for a new file.Please, use \"Save As\" for it.";
+        const string messageDeleteItem = "Are you sure want to delete the item?";
 
         string fileContent = string.Empty;
         string filePath = string.Empty;
@@ -316,14 +317,15 @@ namespace Drinks
 
         public string WritingLiquidInfoToString(Liquid liquid)
         {
-            if (liquid is Drink d)
-                return $"Drink-{d.Name}-{d.Size}";
-            else if (liquid is Fresh f)
+            if (liquid is Fresh f)
                 return $"Fresh-{f.Name}-{f.Size}-{f.Fruit}";
             else if (liquid is CoffeeDrink c)
                 return $"CoffeeDrink-{c.SortOfCoffee}-{c.Coffeine}";
             else
-                return null;
+            {
+                Drink d = (Drink)liquid;
+                return $"Drink-{d.Name}-{d.Size}";
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -349,13 +351,45 @@ namespace Drinks
             }
             else
             {
-                var liquid = new Drink("topo", Volume.M) as Liquid;
-                liquidOrders.Add(liquid);
-                source.Add(GetAnonymous(liquid));
+                //var liquid = new Drink("topo", Volume.M) as Liquid;
+                //liquidOrders.Add(liquid);
+                //source.Add(GetAnonymous(liquid));
 
 
-                ItemForm newItem = new ItemForm();
-                newItem.ShowDialog();
+                ItemForm formAdd = new ItemForm();
+                DialogResult result = formAdd.ShowDialog(this);
+                if (result == DialogResult.Cancel)
+                    return;
+                if (result == DialogResult.OK)
+                {
+                    Liquid newLiquid;
+                    if(formAdd.comboBoxType.SelectedText == "Drink")
+                    {
+                        newLiquid = new Drink(formAdd.textBoxName.Text, ParseToVolume(formAdd.comboBoxSize.Text));
+                        liquidOrders.Add(newLiquid);
+                        source.Add(GetAnonymous(newLiquid));
+                        MessageBox.Show("New Drink Added");
+                    }
+                    else if(formAdd.comboBoxType.SelectedText == "Fresh")
+                    {
+                        newLiquid = new Fresh(formAdd.textBoxName.Text, formAdd.textBoxFruit.Text, ParseToVolume(formAdd.comboBoxSize.Text));
+                        liquidOrders.Add(newLiquid);
+                        source.Add(GetAnonymous(newLiquid));
+                        MessageBox.Show("New Fresh Added");
+                    }
+                    else if(formAdd.comboBoxType.SelectedText == "Coffee")
+                    {
+                        newLiquid = new CoffeeDrink(formAdd.textBoxSortOfCoffee.Text, formAdd.radioButtonCoffeine.Checked);
+                        liquidOrders.Add(newLiquid);
+                        source.Add(GetAnonymous(newLiquid));
+                        MessageBox.Show("New CoffeeDrink Added");
+                    }
+                    else
+                    {
+                        throw new Exception("It's not a Liquid!");
+                    }
+                    MessageBox.Show("Adding Finished");
+                }
 
             }
 
@@ -368,6 +402,16 @@ namespace Drinks
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var result = MessageBox.Show(messageDeleteItem, "Warning", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                // HERE must be a deleting item!
+            }
+            else
+            {
+                return;
+            }
 
         }
 

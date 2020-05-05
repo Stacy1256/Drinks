@@ -27,7 +27,7 @@ namespace Drinks
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            //Close();
         }
         
         //bool caffeine = false;
@@ -137,47 +137,47 @@ namespace Drinks
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // Close();
-            if (String.IsNullOrEmpty(textBoxName.Text) && comboBoxType.Text != "Coffee")
-            {
-                MessageBox.Show("name is empty", "Warning", MessageBoxButtons.OK);
-            }
-            if (String.IsNullOrEmpty(textBoxSortOfCoffee.Text) && comboBoxType.Text == "Coffee")
-            {
-                MessageBox.Show("Sort is empty", "Warning", MessageBoxButtons.OK);
-            }
-            else
-            {
-                Liquid item;
-                string name = textBoxName.Text;
-                string size = comboBoxSize.Text;
-                string fruit = textBoxFruit.Text;
-                string sort = textBoxSortOfCoffee.Text;
-               // MainForm main = new MainForm();
-               // main.ShowDialog();
+            //if (String.IsNullOrEmpty(textBoxName.Text) && comboBoxType.Text != "Coffee")
+            //{
+            //    MessageBox.Show("name is empty", "Warning", MessageBoxButtons.OK);
+            //}
+            //if (String.IsNullOrEmpty(textBoxSortOfCoffee.Text) && comboBoxType.Text == "Coffee")
+            //{
+            //    MessageBox.Show("Sort is empty", "Warning", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    Liquid item;
+            //    string name = textBoxName.Text;
+            //    string size = comboBoxSize.Text;
+            //    string fruit = textBoxFruit.Text;
+            //    string sort = textBoxSortOfCoffee.Text;
+            //   // MainForm main = new MainForm();
+            //   // main.ShowDialog();
 
-                if (comboBoxType.Text == "Drink")
-                {
-                    item = new Drink(name, volume);
-                    //item.SetPrice(volume);
-                    //dataGridView.Rows.Add();
-                    var liquid = new Drink(name, volume) as Liquid;
-                    //liquidOrders.Add(liquid);
-                    //source.Add(GetAnonymous(liquid));
-                }
+            //    if (comboBoxType.Text == "Drink")
+            //    {
+            //        item = new Drink(name, volume);
+            //        //item.SetPrice(volume);
+            //        //dataGridView.Rows.Add();
+            //        var liquid = new Drink(name, volume) as Liquid;
+            //        //liquidOrders.Add(liquid);
+            //        //source.Add(GetAnonymous(liquid));
+            //    }
 
-                else if (comboBoxType.Text == "Fresh")
-                {
-                    item = new Fresh(name, fruit, volume);
-                   // item.SetPrice(volume);
-                }
+            //    else if (comboBoxType.Text == "Fresh")
+            //    {
+            //        item = new Fresh(name, fruit, volume);
+            //       // item.SetPrice(volume);
+            //    }
 
-                else if (comboBoxType.Text == "Coffee")
-                {
-                     item = new CoffeeDrink(sort, radioButtonCoffeine.Checked);
-                }
+            //    else if (comboBoxType.Text == "Coffee")
+            //    {
+            //         item = new CoffeeDrink(sort, radioButtonCoffeine.Checked);
+            //    }
 
-                // dataGridViev.
-            }
+            //    // dataGridViev.
+            //}
         }
 
         private void textBoxSortOfCoffee_TextChanged(object sender, EventArgs e)
