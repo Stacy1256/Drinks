@@ -1,0 +1,4 @@
+Drink-Lemonade-L
+Drink-Orange Juice-M
+CoffeeDrink-Arabica-True
+Drink-Tea-L
