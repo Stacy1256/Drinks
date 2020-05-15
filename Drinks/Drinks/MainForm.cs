@@ -44,7 +44,7 @@ namespace Drinks
 
 
         }
-
+        #region MenuStrip
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFile = new OpenFileDialog())
@@ -345,12 +345,14 @@ namespace Drinks
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        
             if (!(liquidOrders.Any()) && string.IsNullOrEmpty(filePath))
             {
-                MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK);
+                createNewToolStripMenuItem_Click(new object(), new EventArgs());// create new if not exist
+               // MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK); 
             }
-            else
-            {
+           // else
+           // {
                 //var liquid = new Drink("topo", Volume.M) as Liquid;
                 //liquidOrders.Add(liquid);
                 //source.Add(GetAnonymous(liquid));
@@ -379,7 +381,7 @@ namespace Drinks
                     }
                     else if(formAdd.comboBoxType.SelectedText == "Coffee")
                     {
-                        newLiquid = new CoffeeDrink(formAdd.textBoxSortOfCoffee.Text, formAdd.radioButtonCoffeine.Checked);
+                        newLiquid = new CoffeeDrink(formAdd.textBoxSortOfCoffee.Text, formAdd.checkedBoxCoffeine.Checked);
                         liquidOrders.Add(newLiquid);
                         source.Add(GetAnonymous(newLiquid));
                         MessageBox.Show("New CoffeeDrink Added");
@@ -391,7 +393,7 @@ namespace Drinks
                     MessageBox.Show("Adding Finished");
                 }
 
-            }
+           // }
 
         }
 
@@ -435,7 +437,7 @@ namespace Drinks
         {
 
         }
-
+        #endregion
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // string name = ItemForm
@@ -507,6 +509,117 @@ namespace Drinks
         {
 
         }
+
+        #region DataGridView
+        
+        private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MessageBox.Show("yep");
+            //if (e.Button == MouseButtons.Right)
+            //{
+
+            //    ContextMenuStrip columHeaderClickMenu = new ContextMenuStrip();
+
+
+
+
+
+            //    columHeaderClickMenu.Items.Add("Create chart").Name = "CreateChart";
+
+
+
+            //    columHeaderClickMenu.Items.Add("Select Range").Name = "SelectRange";
+
+
+            //    columHeaderClickMenu.Items.Add("Update Sallary").Name = "Sallary";
+
+
+
+
+
+            //    //chow Menu on correct width and hight
+            //    int columsWidth = dataGridView.RowHeadersWidth; ;
+            //    for (int i = 0; i < e.ColumnIndex; i++)
+            //    {
+            //        columsWidth += dataGridView.Columns[i].Width;
+            //    }
+            //    columHeaderClickMenu.Show(dataGridView, columsWidth, dataGridView.ColumnHeadersHeight + 1);
+
+
+
+
+            //    columHeaderClickMenu.ItemClicked += new ToolStripItemClickedEventHandler(chartMenu_ItemClicked);
+
+
+
+            //    void chartMenu_ItemClicked(object sender1, ToolStripItemClickedEventArgs e1)
+            //    {
+            //        switch (e1.ClickedItem.Name.ToString())
+            //        {
+            //            case "CreateChart":
+            //                ChartForm chart = new ChartForm(dataGridView.Columns[e.ColumnIndex].Name, Emploees);
+            //                chart.Show();
+            //                break;
+            //            case "SelectRange":
+            //                SelectRange range = new SelectRange(Emploees, dataGridView.Columns[e.ColumnIndex].Name);
+            //                range.Show();
+            //                break;
+            //            case "Sallary":
+            //                SelectRange range1 = new SelectRange(Emploees, dataGridView.Columns[e.ColumnIndex].Name, true);
+            //                range1.Show();
+            //                break;
+            //        }
+
+            //    }//ocures when click on floating menu
+            //}
+
+            //else//if left click ocurred
+            //{
+                DataGridViewColumn newColumn = dataGridView.Columns[e.ColumnIndex];
+                DataGridViewColumn oldColumn = dataGridView.SortedColumn;
+                ListSortDirection direction;
+
+                // If oldColumn is null, then the DataGridView is not sorted.
+                if (oldColumn != null)
+                {
+                    // Sort the same column again, reversing the SortOrder.
+                    if (oldColumn == newColumn &&
+                        dataGridView.SortOrder == SortOrder.Descending)
+                    {
+
+                        direction = ListSortDirection.Descending;
+
+        {
+
+        }
+    }
+                    else
+                    {
+                        // Sort a new column and remove the old SortGlyph.
+                        direction = ListSortDirection.Ascending;
+                        oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                    }
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                }
+
+
+                // Sort the selected column.
+
+                dataGridView.Sort(newColumn, direction);
+                newColumn.HeaderCell.SortGlyphDirection =
+                    direction == ListSortDirection.Ascending ?
+                    SortOrder.Ascending : SortOrder.Descending;
+
+               // UpdateDataGrid();
+
+           // }
+        }
+
+
+        #endregion
     }
 
 

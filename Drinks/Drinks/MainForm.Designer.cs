@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,7 +93,8 @@
             // 
             this.createNewToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.createNewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
             this.createNewToolStripMenuItem.Text = "Create new";
             this.createNewToolStripMenuItem.Click += new System.EventHandler(this.createNewToolStripMenuItem_Click);
             // 
@@ -101,7 +102,7 @@
             // 
             this.openToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -109,7 +110,7 @@
             // 
             this.saveToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -117,7 +118,7 @@
             // 
             this.saveAsToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -125,7 +126,7 @@
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(262, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -145,7 +146,8 @@
             // 
             this.addNewToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.addNewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(239, 34);
             this.addNewToolStripMenuItem.Text = "Add new";
             this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
             // 
@@ -153,7 +155,7 @@
             // 
             this.updateToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(239, 34);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -161,7 +163,7 @@
             // 
             this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.Gainsboro;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(239, 34);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -183,7 +185,7 @@
             this.viewHelpToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.viewHelpToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.viewHelpToolStripMenuItem.Name = "viewHelpToolStripMenuItem";
-            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.viewHelpToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
             this.viewHelpToolStripMenuItem.Text = "View help";
             this.viewHelpToolStripMenuItem.Click += new System.EventHandler(this.viewHelpToolStripMenuItem_Click);
             // 
@@ -191,7 +193,7 @@
             // 
             this.aboutAuthorToolStripMenuItem.BackColor = System.Drawing.Color.MistyRose;
             this.aboutAuthorToolStripMenuItem.Name = "aboutAuthorToolStripMenuItem";
-            this.aboutAuthorToolStripMenuItem.Size = new System.Drawing.Size(216, 34);
+            this.aboutAuthorToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
             this.aboutAuthorToolStripMenuItem.Text = "About author";
             this.aboutAuthorToolStripMenuItem.Click += new System.EventHandler(this.aboutAuthorToolStripMenuItem_Click);
             // 
@@ -199,13 +201,13 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = "- - -";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe Print", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.NullValue = "- - -";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.BackgroundColor = System.Drawing.Color.LavenderBlush;
@@ -219,6 +221,7 @@
             this.dataGridView.Size = new System.Drawing.Size(930, 251);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ColumnHeaderMouseClick);
             // 
             // label1
             // 
@@ -340,7 +343,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Pink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -356,7 +359,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.pictureBox2);
-            this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.Thistle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;

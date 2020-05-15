@@ -43,6 +43,7 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.checkedBoxCoffeine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             this.textBoxName.Location = new System.Drawing.Point(196, 125);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(403, 39);
+            this.textBoxName.Size = new System.Drawing.Size(618, 39);
             this.textBoxName.TabIndex = 6;
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
@@ -108,7 +109,7 @@
             this.textBoxFruit.Location = new System.Drawing.Point(199, 284);
             this.textBoxFruit.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxFruit.Name = "textBoxFruit";
-            this.textBoxFruit.Size = new System.Drawing.Size(400, 39);
+            this.textBoxFruit.Size = new System.Drawing.Size(615, 39);
             this.textBoxFruit.TabIndex = 7;
             this.textBoxFruit.TextChanged += new System.EventHandler(this.textBoxFruit_TextChanged);
             this.textBoxFruit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
@@ -120,7 +121,7 @@
             this.textBoxSortOfCoffee.Location = new System.Drawing.Point(199, 359);
             this.textBoxSortOfCoffee.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.textBoxSortOfCoffee.Name = "textBoxSortOfCoffee";
-            this.textBoxSortOfCoffee.Size = new System.Drawing.Size(400, 39);
+            this.textBoxSortOfCoffee.Size = new System.Drawing.Size(615, 39);
             this.textBoxSortOfCoffee.TabIndex = 8;
             this.textBoxSortOfCoffee.TextChanged += new System.EventHandler(this.textBoxSortOfCoffee_TextChanged);
             this.textBoxSortOfCoffee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFruit_KeyPress);
@@ -131,7 +132,7 @@
             this.buttonSave.BackColor = System.Drawing.Color.LavenderBlush;
             this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSave.Enabled = false;
-            this.buttonSave.Location = new System.Drawing.Point(240, 487);
+            this.buttonSave.Location = new System.Drawing.Point(455, 586);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(161, 58);
@@ -145,7 +146,7 @@
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.BackColor = System.Drawing.Color.LavenderBlush;
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(438, 487);
+            this.buttonCancel.Location = new System.Drawing.Point(653, 586);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(161, 58);
@@ -168,6 +169,7 @@
             this.radioButtonCoffeine.TabStop = true;
             this.radioButtonCoffeine.Text = "Coffeine";
             this.radioButtonCoffeine.UseVisualStyleBackColor = false;
+            this.radioButtonCoffeine.Visible = false;
             this.radioButtonCoffeine.CheckedChanged += new System.EventHandler(this.radioButtonCoffeine_CheckedChanged);
             // 
             // comboBoxSize
@@ -182,7 +184,7 @@
             this.comboBoxSize.Location = new System.Drawing.Point(196, 202);
             this.comboBoxSize.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.comboBoxSize.Name = "comboBoxSize";
-            this.comboBoxSize.Size = new System.Drawing.Size(403, 39);
+            this.comboBoxSize.Size = new System.Drawing.Size(618, 39);
             this.comboBoxSize.TabIndex = 12;
             this.comboBoxSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxSize_SelectedIndexChanged);
             // 
@@ -198,7 +200,7 @@
             this.comboBoxType.Location = new System.Drawing.Point(196, 44);
             this.comboBoxType.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(403, 39);
+            this.comboBoxType.Size = new System.Drawing.Size(618, 39);
             this.comboBoxType.TabIndex = 13;
             this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
             // 
@@ -207,7 +209,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(27, 414);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 513);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(149, 145);
@@ -225,6 +227,18 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Type";
             // 
+            // checkedBoxCoffeine
+            // 
+            this.checkedBoxCoffeine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedBoxCoffeine.AutoSize = true;
+            this.checkedBoxCoffeine.Location = new System.Drawing.Point(269, 462);
+            this.checkedBoxCoffeine.Name = "checkedBoxCoffeine";
+            this.checkedBoxCoffeine.Size = new System.Drawing.Size(113, 37);
+            this.checkedBoxCoffeine.TabIndex = 16;
+            this.checkedBoxCoffeine.Text = "Coffeine";
+            this.checkedBoxCoffeine.UseVisualStyleBackColor = true;
+            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 31F);
@@ -232,7 +246,8 @@
             this.BackColor = System.Drawing.Color.LightPink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(641, 562);
+            this.ClientSize = new System.Drawing.Size(856, 661);
+            this.Controls.Add(this.checkedBoxCoffeine);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.comboBoxSize);
@@ -279,5 +294,6 @@
         protected internal System.Windows.Forms.ComboBox comboBoxSize;
         protected internal System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.CheckBox checkedBoxCoffeine;
     }
 }
