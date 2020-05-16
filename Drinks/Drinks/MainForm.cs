@@ -28,12 +28,27 @@ namespace Drinks
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
         //BindingList<Liquid> bindingList;
-        BindingSource source;// = new BindingSource();
+        BindingSource source = new BindingSource();
+
+        SortableBindingList<OverAllLiqudData> sorceList= new SortableBindingList<OverAllLiqudData>();
+        
+        public class OverAllLiqudData
+        {
+           public string Name { get; set; }
+           public string Size { get; set; }
+           public string Price { get; set; }
+           public string Fruit { get; set; }
+           public string SortOfCoffee { get; set; }
+           public string Coffeine { get; set; }
+        }
 
         public MainForm()
         {
             InitializeComponent();
             dataGridView.Visible = false;
+
+            source.DataSource = sorceList;
+            dataGridView.RowsDefaultCellStyle = dataGridView.AlternatingRowsDefaultCellStyle;//лінь було руками міняти проперті тому буде так
             //dataGridView.Columns.Add("number", "№");
             //dataGridView.Columns.Add("name", "Name");
             //dataGridView.Columns.Add("size", "Size");
@@ -194,9 +209,9 @@ namespace Drinks
             }
         }
 
-        public object GetAnonymous(Liquid liquid)
+        public OverAllLiqudData GetAnonymous(Liquid liquid)
         {
-            return new
+            return new OverAllLiqudData()
             {
                 Name = (liquid as Drink)?.Name ?? string.Empty,
                 Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
@@ -222,7 +237,7 @@ namespace Drinks
             
 
             liquidOrders = new List<Liquid>();
-            source = new BindingSource();
+            //ource = new BindingSource();
 
             dataGridView.DataSource = source;
             dataGridView.Visible = true;
@@ -575,7 +590,14 @@ namespace Drinks
 
             //else//if left click ocurred
             //{
-                DataGridViewColumn newColumn = dataGridView.Columns[e.ColumnIndex];
+
+            
+                
+            
+
+
+
+            DataGridViewColumn newColumn = dataGridView.Columns[e.ColumnIndex];
                 DataGridViewColumn oldColumn = dataGridView.SortedColumn;
                 ListSortDirection direction;
 

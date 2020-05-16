@@ -232,12 +232,13 @@
             this.checkedBoxCoffeine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedBoxCoffeine.AutoSize = true;
-            this.checkedBoxCoffeine.Location = new System.Drawing.Point(269, 462);
+            this.checkedBoxCoffeine.BackColor = System.Drawing.Color.Transparent;
+            this.checkedBoxCoffeine.Location = new System.Drawing.Point(268, 414);
             this.checkedBoxCoffeine.Name = "checkedBoxCoffeine";
             this.checkedBoxCoffeine.Size = new System.Drawing.Size(113, 37);
             this.checkedBoxCoffeine.TabIndex = 16;
             this.checkedBoxCoffeine.Text = "Coffeine";
-            this.checkedBoxCoffeine.UseVisualStyleBackColor = true;
+            this.checkedBoxCoffeine.UseVisualStyleBackColor = false;
             // 
             // ItemForm
             // 
