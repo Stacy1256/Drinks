@@ -27,20 +27,11 @@ namespace Drinks
         string fileContent = string.Empty;
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
-        //BindingList<Liquid> bindingList;
-        BindingSource source = new BindingSource();
-
+       
+        BindingSource source = new BindingSource();//Create list to bind with data source
         SortableBindingList<OverAllLiqudData> sorceList= new SortableBindingList<OverAllLiqudData>();
         
-        public class OverAllLiqudData
-        {
-           public string Name { get; set; }
-           public string Size { get; set; }
-           public string Price { get; set; }
-           public string Fruit { get; set; }
-           public string SortOfCoffee { get; set; }
-           public string Coffeine { get; set; }
-        }
+        
 
         public MainForm()
         {
@@ -59,7 +50,62 @@ namespace Drinks
 
 
         }
+        public static Volume ParseToVolume(string size)
+        {
+            Volume volume;
+            try
+            {
+                volume = (Volume)Enum.Parse(typeof(Volume), size);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+                // Отуууут фііііігняяяяя
+            }
+            return volume;
+        }
+
+        public static Liquid ParseToLiquid(string fileContent)
+        {
+            var fileString = fileContent.Split('-');
+            Liquid item;
+            switch (fileString[0])
+            {
+                case ("Drink"):
+                    item = new Drink(fileString[1], ParseToVolume(fileString[2]));
+                    return item;
+                case ("Fresh"):
+                    item = new Fresh(fileString[1], fileString[3], ParseToVolume(fileString[2]));
+                    return item;
+                case ("CoffeeDrink"):
+                    item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
+                    return item;
+                default:
+                    throw new Exception("Not a Liquid type");
+                    //return new Liquid();
+            }
+        }
+
+        public OverAllLiqudData GetAnonymous(Liquid liquid)
+        {
+            return new OverAllLiqudData()
+            {
+                Name = (liquid as Drink)?.Name ?? string.Empty,
+                Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
+                Price = (liquid as Drink)?.Price.ToString() ?? string.Empty,
+                Fruit = (liquid as Fresh)?.Fruit.ToString() ?? string.Empty,
+                SortOfCoffee = (liquid as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
+                Coffeine = (liquid as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
+            };
+        }
         #region MenuStrip
+        #region FileMenuStrip
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }//no idei why it here
+
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFile = new OpenFileDialog())
@@ -170,58 +216,7 @@ namespace Drinks
             dataGridView.Visible = true;
 
 
-        }
-
-        public static Volume ParseToVolume(string size)
-        {
-            Volume volume;
-            try
-            {
-                volume = (Volume)Enum.Parse(typeof(Volume), size);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                return 0;
-                // Отуууут фііііігняяяяя
-            }
-            return volume;
-        }
-
-        public static Liquid ParseToLiquid(string fileContent)
-        {
-            var fileString = fileContent.Split('-');
-            Liquid item;
-            switch (fileString[0])
-            {
-                case ("Drink"):
-                    item = new Drink(fileString[1], ParseToVolume(fileString[2]));
-                    return item;
-                case ("Fresh"):
-                    item = new Fresh(fileString[1], fileString[3], ParseToVolume(fileString[2]));
-                    return item;
-                case ("CoffeeDrink"):
-                    item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
-                    return item;
-                default:
-                    throw new Exception("Not a Liquid type");
-                    //return new Liquid();
-            }
-        }
-
-        public OverAllLiqudData GetAnonymous(Liquid liquid)
-        {
-            return new OverAllLiqudData()
-            {
-                Name = (liquid as Drink)?.Name ?? string.Empty,
-                Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
-                Price = (liquid as Drink)?.Price.ToString() ?? string.Empty,
-                Fruit = (liquid as Fresh)?.Fruit.ToString() ?? string.Empty,
-                SortOfCoffee = (liquid as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
-                Coffeine = (liquid as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
-            };
-        }
-
+        } 
 
         private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -357,6 +352,8 @@ namespace Drinks
 
             this.Close();
         }
+        #endregion
+        #region EditMenuStrip
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -431,7 +428,8 @@ namespace Drinks
             }
 
         }
-
+        #endregion
+        #region HelpMenuStrip
         private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //dataGridView.Visible = false;
@@ -453,14 +451,8 @@ namespace Drinks
 
         }
         #endregion
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // string name = ItemForm
-            //string size = comboBoxSize.Text;
-            //string fruit = textBoxFruit.Text;
-            //string sort = textBoxSortOfCoffee.Text;
-
-        }
+        #endregion
+       
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -520,16 +512,13 @@ namespace Drinks
 
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         #region DataGridView
         
         private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            MessageBox.Show("yep");
+            //MessageBox.Show("yep");
             //if (e.Button == MouseButtons.Right)
             //{
 
@@ -639,9 +628,22 @@ namespace Drinks
 
            // }
         }
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // string name = ItemForm
+            //string size = comboBoxSize.Text;
+            //string fruit = textBoxFruit.Text;
+            //string sort = textBoxSortOfCoffee.Text;
 
-
+        }
+        private void dataGridView_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)// Chart creation
+        {
+            ChartForm chart = new ChartForm(dataGridView.Columns[e.ColumnIndex].Name, sorceList);
+            chart.Show();
+        }
         #endregion
+
+
     }
 
 

@@ -53,6 +53,12 @@
     <Compile Include="About_author.Designer.cs">
       <DependentUpon>About_author.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartForm.Designer.cs">
+      <DependentUpon>ChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,7 @@
     <Compile Include="Models\Drink.cs" />
     <Compile Include="Models\Fresh.cs" />
     <Compile Include="Models\Liquid.cs" />
+    <Compile Include="OverAllLiqudData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sample.Designer.cs">
@@ -98,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="About_author.resx">
       <DependentUpon>About_author.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartForm.resx">
+      <DependentUpon>ChartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemForm.resx">
       <DependentUpon>ItemForm.cs</DependentUpon>
