@@ -88,21 +88,9 @@ namespace Drinks
 
         private void textBoxFruit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (!Char.IsLetter(ch))
+            if (Char.IsDigit(e.KeyChar) && e.KeyChar != ',')//cant erase bug
             {
                 e.Handled = true;
-            }
-            if (Char.IsControl(e.KeyChar))
-            {
-                if (e.KeyChar == (char)Keys.Enter)
-                {
-                    if (sender.Equals(textBoxFruit))
-                    {
-                        buttonSave.Focus();
-                    }
-                }
-
             }
         }
 

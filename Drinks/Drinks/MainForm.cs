@@ -381,7 +381,8 @@ namespace Drinks
                     {
                         newLiquid = new Drink(formAdd.textBoxName.Text, ParseToVolume(formAdd.comboBoxSize.Text));
                         liquidOrders.Add(newLiquid);
-                        source.Add(GetAnonymous(newLiquid));
+                        //source.Add(GetAnonymous(newLiquid));
+                        sorceList.Add(GetAnonymous(newLiquid));
                         MessageBox.Show("New Drink Added");
                     }
                     else if(formAdd.comboBoxType.SelectedText == "Fresh")
@@ -455,8 +456,8 @@ namespace Drinks
        
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
-            if (!Char.IsDigit(ch) && ch != ',')
+           
+            if (Char.IsLetter(e.KeyChar) && e.KeyChar != ',')//cant erase bug
             {
                 e.Handled = true;
             }
@@ -471,7 +472,7 @@ namespace Drinks
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            double max = Convert.ToDouble(textBox1.Text);
+            double max = Convert.ToDouble(textBox1.Text);// no sense for this
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -484,13 +485,19 @@ namespace Drinks
             string type = comboBox1.Text;
         }
         private void button1_Click(object sender, EventArgs e)
-        {
-            //if (Convert.ToDouble(textBox1.Text) < Convert.ToDouble(textBox2.Text))
-            //{
-            //    MessageBox.Show(messageWarningSaveNothing, "Warning", MessageBoxButtons.OK);
-           // }
-            SampleForm sample = new SampleForm();
-            sample.ShowDialog();
+        {           
+            //MessageBox.Show(this.comboBox2.SelectedIndex.ToString());
+            if (this.textBox1.Text == "" || this.textBox2.Text == "" || this.comboBox1.SelectedIndex == -1 || this.comboBox2.SelectedIndex == -1) return;
+
+
+            // так я дві години фікси код не в тому місці і там такі костилі шо мені соромно 
+                  
+                    SampleForm sample = new SampleForm(sorceList, comboBox1.Text,comboBox2.Text);
+                    sample.ShowDialog();       
+              
+            
+            
+
         }
 
         private void Sort_by_prise(Drink[] arr, int size)
