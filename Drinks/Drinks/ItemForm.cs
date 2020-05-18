@@ -22,6 +22,9 @@ namespace Drinks
             //comboBoxSize.Items.Add(Volume.M);
             //comboBoxSize.Items.Add(Volume.L);
 
+
+            comboBoxType.SelectedIndex = 0;//initialize with selected drink just to debug
+
         }
 
 
@@ -48,7 +51,8 @@ namespace Drinks
                 comboBoxSize.Enabled = true;
                 textBoxFruit.Enabled = false;
                 textBoxSortOfCoffee.Enabled = false;
-                radioButtonCoffeine.Enabled = false;
+                // radioButtonCoffeine.Enabled = false;
+                checkedBoxCoffeine.Enabled = false;
                 buttonSave.Enabled = true;
             }
             else if (comboBoxType.Text == "Fresh")
@@ -57,7 +61,8 @@ namespace Drinks
                 comboBoxSize.Enabled = true;
                 textBoxFruit.Enabled = true;
                 textBoxSortOfCoffee.Enabled = false;
-                radioButtonCoffeine.Enabled = false;
+               // radioButtonCoffeine.Enabled = false;
+                checkedBoxCoffeine.Enabled = false;
                 buttonSave.Enabled = true;
             }
             else if (comboBoxType.Text == "Coffee")
@@ -66,7 +71,8 @@ namespace Drinks
                 comboBoxSize.Enabled = false;
                 textBoxFruit.Enabled = false;
                 textBoxSortOfCoffee.Enabled = true;
-                radioButtonCoffeine.Enabled = true;
+                // radioButtonCoffeine.Enabled = true;
+                checkedBoxCoffeine.Enabled = true;
                 buttonSave.Enabled = true;
             }
             else if (comboBoxType.Text != "Coffee" || comboBoxType.Text != "Drink" || comboBoxType.Text != "Fresh")
@@ -134,6 +140,7 @@ namespace Drinks
             }
         }
 
+        
         private void buttonSave_Click(object sender, EventArgs e)
         {
             // Close();

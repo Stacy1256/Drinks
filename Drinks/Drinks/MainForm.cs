@@ -27,13 +27,19 @@ namespace Drinks
         string fileContent = string.Empty;
         string filePath = string.Empty;
         IList<Liquid> liquidOrders = new List<Liquid>();
-        //BindingList<Liquid> bindingList;
-        BindingSource source;// = new BindingSource();
+       
+        BindingSource source = new BindingSource();//Create list to bind with data source
+        SortableBindingList<OverAllLiqudData> sorceList= new SortableBindingList<OverAllLiqudData>();
+        
+        
 
         public MainForm()
         {
             InitializeComponent();
             dataGridView.Visible = false;
+
+            source.DataSource = sorceList;
+            dataGridView.RowsDefaultCellStyle = dataGridView.AlternatingRowsDefaultCellStyle;//лінь було руками міняти проперті тому буде так
             //dataGridView.Columns.Add("number", "№");
             //dataGridView.Columns.Add("name", "Name");
             //dataGridView.Columns.Add("size", "Size");
@@ -44,6 +50,61 @@ namespace Drinks
 
 
         }
+        public static Volume ParseToVolume(string size)
+        {
+            Volume volume;
+            try
+            {
+                volume = (Volume)Enum.Parse(typeof(Volume), size);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+                return 0;
+                // Отуууут фііііігняяяяя
+            }
+            return volume;
+        }
+
+        public static Liquid ParseToLiquid(string fileContent)
+        {
+            var fileString = fileContent.Split('-');
+            Liquid item;
+            switch (fileString[0])
+            {
+                case ("Drink"):
+                    item = new Drink(fileString[1], ParseToVolume(fileString[2]));
+                    return item;
+                case ("Fresh"):
+                    item = new Fresh(fileString[1], fileString[3], ParseToVolume(fileString[2]));
+                    return item;
+                case ("CoffeeDrink"):
+                    item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
+                    return item;
+                default:
+                    throw new Exception("Not a Liquid type");
+                    //return new Liquid();
+            }
+        }
+
+        public OverAllLiqudData GetAnonymous(Liquid liquid)
+        {
+            return new OverAllLiqudData()
+            {
+                Name = (liquid as Drink)?.Name ?? string.Empty,
+                Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
+                Price = (liquid as Drink)?.Price.ToString() ?? string.Empty,
+                Fruit = (liquid as Fresh)?.Fruit.ToString() ?? string.Empty,
+                SortOfCoffee = (liquid as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
+                Coffeine = (liquid as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
+            };
+        }
+        #region MenuStrip
+        #region FileMenuStrip
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }//no idei why it here
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -155,58 +216,7 @@ namespace Drinks
             dataGridView.Visible = true;
 
 
-        }
-
-        public static Volume ParseToVolume(string size)
-        {
-            Volume volume;
-            try
-            {
-                volume = (Volume)Enum.Parse(typeof(Volume), size);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-                return 0;
-                // Отуууут фііііігняяяяя
-            }
-            return volume;
-        }
-
-        public static Liquid ParseToLiquid(string fileContent)
-        {
-            var fileString = fileContent.Split('-');
-            Liquid item;
-            switch (fileString[0])
-            {
-                case ("Drink"):
-                    item = new Drink(fileString[1], ParseToVolume(fileString[2]));
-                    return item;
-                case ("Fresh"):
-                    item = new Fresh(fileString[1], fileString[3], ParseToVolume(fileString[2]));
-                    return item;
-                case ("CoffeeDrink"):
-                    item = new CoffeeDrink(fileString[1], bool.Parse(fileString[2]));
-                    return item;
-                default:
-                    throw new Exception("Not a Liquid type");
-                    //return new Liquid();
-            }
-        }
-
-        public object GetAnonymous(Liquid liquid)
-        {
-            return new
-            {
-                Name = (liquid as Drink)?.Name ?? string.Empty,
-                Size = (liquid as Drink)?.Size.ToString() ?? string.Empty,
-                Price = (liquid as Drink)?.Price.ToString() ?? string.Empty,
-                Fruit = (liquid as Fresh)?.Fruit.ToString() ?? string.Empty,
-                SortOfCoffee = (liquid as CoffeeDrink)?.SortOfCoffee ?? string.Empty,
-                Coffeine = (liquid as CoffeeDrink)?.Coffeine.ToString() ?? string.Empty,
-            };
-        }
-
+        } 
 
         private void createNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -222,7 +232,7 @@ namespace Drinks
             
 
             liquidOrders = new List<Liquid>();
-            source = new BindingSource();
+            //ource = new BindingSource();
 
             dataGridView.DataSource = source;
             dataGridView.Visible = true;
@@ -342,15 +352,19 @@ namespace Drinks
 
             this.Close();
         }
+        #endregion
+        #region EditMenuStrip
 
         private void addNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
+        
             if (!(liquidOrders.Any()) && string.IsNullOrEmpty(filePath))
             {
-                MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK);
+                createNewToolStripMenuItem_Click(new object(), new EventArgs());// create new if not exist
+               // MessageBox.Show(messageAddToNothing, "Warning", MessageBoxButtons.OK); 
             }
-            else
-            {
+           // else
+           // {
                 //var liquid = new Drink("topo", Volume.M) as Liquid;
                 //liquidOrders.Add(liquid);
                 //source.Add(GetAnonymous(liquid));
@@ -379,7 +393,7 @@ namespace Drinks
                     }
                     else if(formAdd.comboBoxType.SelectedText == "Coffee")
                     {
-                        newLiquid = new CoffeeDrink(formAdd.textBoxSortOfCoffee.Text, formAdd.radioButtonCoffeine.Checked);
+                        newLiquid = new CoffeeDrink(formAdd.textBoxSortOfCoffee.Text, formAdd.checkedBoxCoffeine.Checked);
                         liquidOrders.Add(newLiquid);
                         source.Add(GetAnonymous(newLiquid));
                         MessageBox.Show("New CoffeeDrink Added");
@@ -391,7 +405,7 @@ namespace Drinks
                     MessageBox.Show("Adding Finished");
                 }
 
-            }
+           // }
 
         }
 
@@ -414,7 +428,8 @@ namespace Drinks
             }
 
         }
-
+        #endregion
+        #region HelpMenuStrip
         private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //dataGridView.Visible = false;
@@ -435,15 +450,9 @@ namespace Drinks
         {
 
         }
-
-        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // string name = ItemForm
-            //string size = comboBoxSize.Text;
-            //string fruit = textBoxFruit.Text;
-            //string sort = textBoxSortOfCoffee.Text;
-
-        }
+        #endregion
+        #endregion
+       
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -503,10 +512,138 @@ namespace Drinks
 
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        
+
+        #region DataGridView
+        
+        private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //MessageBox.Show("yep");
+            //if (e.Button == MouseButtons.Right)
+            //{
+
+            //    ContextMenuStrip columHeaderClickMenu = new ContextMenuStrip();
+
+
+
+
+
+            //    columHeaderClickMenu.Items.Add("Create chart").Name = "CreateChart";
+
+
+
+            //    columHeaderClickMenu.Items.Add("Select Range").Name = "SelectRange";
+
+
+            //    columHeaderClickMenu.Items.Add("Update Sallary").Name = "Sallary";
+
+
+
+
+
+            //    //chow Menu on correct width and hight
+            //    int columsWidth = dataGridView.RowHeadersWidth; ;
+            //    for (int i = 0; i < e.ColumnIndex; i++)
+            //    {
+            //        columsWidth += dataGridView.Columns[i].Width;
+            //    }
+            //    columHeaderClickMenu.Show(dataGridView, columsWidth, dataGridView.ColumnHeadersHeight + 1);
+
+
+
+
+            //    columHeaderClickMenu.ItemClicked += new ToolStripItemClickedEventHandler(chartMenu_ItemClicked);
+
+
+
+            //    void chartMenu_ItemClicked(object sender1, ToolStripItemClickedEventArgs e1)
+            //    {
+            //        switch (e1.ClickedItem.Name.ToString())
+            //        {
+            //            case "CreateChart":
+            //                ChartForm chart = new ChartForm(dataGridView.Columns[e.ColumnIndex].Name, Emploees);
+            //                chart.Show();
+            //                break;
+            //            case "SelectRange":
+            //                SelectRange range = new SelectRange(Emploees, dataGridView.Columns[e.ColumnIndex].Name);
+            //                range.Show();
+            //                break;
+            //            case "Sallary":
+            //                SelectRange range1 = new SelectRange(Emploees, dataGridView.Columns[e.ColumnIndex].Name, true);
+            //                range1.Show();
+            //                break;
+            //        }
+
+            //    }//ocures when click on floating menu
+            //}
+
+            //else//if left click ocurred
+            //{
+
+            
+                
+            
+
+
+
+            DataGridViewColumn newColumn = dataGridView.Columns[e.ColumnIndex];
+                DataGridViewColumn oldColumn = dataGridView.SortedColumn;
+                ListSortDirection direction;
+
+                // If oldColumn is null, then the DataGridView is not sorted.
+                if (oldColumn != null)
+                {
+                    // Sort the same column again, reversing the SortOrder.
+                    if (oldColumn == newColumn &&
+                        dataGridView.SortOrder == SortOrder.Descending)
+                    {
+
+                        direction = ListSortDirection.Descending;
+
         {
 
         }
+    }
+                    else
+                    {
+                        // Sort a new column and remove the old SortGlyph.
+                        direction = ListSortDirection.Ascending;
+                        oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                    }
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                }
+
+
+                // Sort the selected column.
+
+                dataGridView.Sort(newColumn, direction);
+                newColumn.HeaderCell.SortGlyphDirection =
+                    direction == ListSortDirection.Ascending ?
+                    SortOrder.Ascending : SortOrder.Descending;
+
+               // UpdateDataGrid();
+
+           // }
+        }
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // string name = ItemForm
+            //string size = comboBoxSize.Text;
+            //string fruit = textBoxFruit.Text;
+            //string sort = textBoxSortOfCoffee.Text;
+
+        }
+        private void dataGridView_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)// Chart creation
+        {
+            ChartForm chart = new ChartForm(dataGridView.Columns[e.ColumnIndex].Name, sorceList);
+            chart.Show();
+        }
+        #endregion
+
+
     }
 
 
